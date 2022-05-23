@@ -14,6 +14,15 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    fontFamily: [
+      '"GT Walsheim"',
+      '"Helvetica Neue"',
+      'Helvetica',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+  },
 })
 
 export default theme

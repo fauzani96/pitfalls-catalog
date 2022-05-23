@@ -1,5 +1,4 @@
 import AdbIcon from '@mui/icons-material/Adb'
-import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import {
   Box,
@@ -7,14 +6,14 @@ import {
   Container,
   IconButton,
   InputBase,
-  Menu,
-  MenuItem,
   Toolbar,
   Typography,
 } from '@mui/material'
 import {alpha, styled} from '@mui/material/styles'
 import React from 'react'
+import {pages} from '../../constants/Pages.constant'
 import HideOnScroll from '../../hooks/HideonScroll.hook'
+import MenuMobile from './menu/Menu.component'
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -58,19 +57,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
   },
 }))
 
-const pages = ['Products', 'Pricing', 'Blog']
-
 const Navbar = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  )
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
-  }
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
   return (
     <>
       <HideOnScroll>
@@ -84,25 +71,16 @@ const Navbar = () => {
         >
           <Container maxWidth="lg">
             <Toolbar disableGutters>
-              <AdbIcon sx={{display: 'flex', mr: 1}} />
-              <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: 'flex',
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                LOGO
-              </Typography>
-              <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
+              {/* <Box sx={{position: 'relative', width: 200}}>
+                
+              </Box> */}
+
+              <img
+                src="/images/logo.png" // Route of the image file
+                alt="Logo"
+                width="125"
+              />
+              <Box sx={{ml: 1, flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                 {pages.map((page) => (
                   <Button key={page} sx={{my: 2, display: 'block'}}>
                     {page}
@@ -124,40 +102,11 @@ const Navbar = () => {
               <Box
                 sx={{flexGrow: 0, visibility: {xs: 'visible', md: 'hidden'}}}
               >
-                <IconButton color="primary" size="small">
+                <IconButton size="small">
                   <SearchIcon />
                 </IconButton>
 
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  color="primary"
-                  size="small"
-                >
-                  <MenuIcon />
-                </IconButton>
-
-                <Menu
-                  sx={{mt: '45px'}}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
+                <MenuMobile />
               </Box>
             </Toolbar>
           </Container>
