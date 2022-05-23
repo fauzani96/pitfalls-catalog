@@ -19,8 +19,8 @@ const Home: NextPage = () => {
           alignItems: 'center',
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
+        <Typography variant="body1" gutterBottom>
+          {Array.from({length: 50}).map(() => 'Lorem ipsum dolor sir amet.')}
         </Typography>
         <Link href="/about" color="secondary">
           Go to the about page

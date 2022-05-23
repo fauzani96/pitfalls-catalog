@@ -1,26 +1,27 @@
-import React from 'react'
+import AdbIcon from '@mui/icons-material/Adb'
+import MenuIcon from '@mui/icons-material/Menu'
+import SearchIcon from '@mui/icons-material/Search'
 import {
-  AppBar,
-  Avatar,
   Box,
   Button,
   Container,
-  Icon,
+  IconButton,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from '@mui/material'
-import AdbIcon from '@mui/icons-material/Adb'
+import {alpha, styled} from '@mui/material/styles'
+import React from 'react'
 import HideOnScroll from '../../hooks/HideonScroll.hook'
-import SearchIcon from '@mui/icons-material/Search'
-import {styled, alpha} from '@mui/material/styles'
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.black, 0.05),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.black, 0.15),
   },
   marginLeft: 0,
   width: '100%',
@@ -60,11 +61,28 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 const pages = ['Products', 'Pricing', 'Blog']
 
 const Navbar = () => {
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  )
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget)
+  }
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
+  }
   return (
     <>
       <HideOnScroll>
-        <AppBar>
-          <Container maxWidth="lg" sx={{display: 'block'}}>
+        <Box
+          sx={{
+            position: 'fixed',
+            zIndex: 1,
+            background: 'white',
+            width: '100%',
+          }}
+        >
+          <Container maxWidth="lg">
             <Toolbar disableGutters>
               <AdbIcon sx={{display: 'flex', mr: 1}} />
               <Typography
@@ -86,18 +104,14 @@ const Navbar = () => {
               </Typography>
               <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                 {pages.map((page) => (
-                  <Button
-                    key={page}
-                    sx={{my: 2, color: 'white', display: 'block'}}
-                  >
+                  <Button key={page} sx={{my: 2, display: 'block'}}>
                     {page}
                   </Button>
                 ))}
               </Box>
               <Box sx={{flexGrow: 4}} />
-              <Box sx={{flexGrow: 1}}>
-                <SearchIcon />
-                {/* <Search>
+              <Box sx={{flexGrow: 0}}>
+                <Search sx={{display: {xs: 'none', md: 'block'}}}>
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
@@ -105,11 +119,49 @@ const Navbar = () => {
                     placeholder="Search…"
                     inputProps={{'aria-label': 'search'}}
                   />
-                </Search> */}
+                </Search>
+              </Box>
+              <Box
+                sx={{flexGrow: 0, visibility: {xs: 'visible', md: 'hidden'}}}
+              >
+                <IconButton color="primary" size="small">
+                  <SearchIcon />
+                </IconButton>
+
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  color="primary"
+                  size="small"
+                >
+                  <MenuIcon />
+                </IconButton>
+
+                <Menu
+                  sx={{mt: '45px'}}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
               </Box>
             </Toolbar>
           </Container>
-        </AppBar>
+        </Box>
       </HideOnScroll>
       <Toolbar />
     </>
