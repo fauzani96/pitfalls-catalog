@@ -13,11 +13,6 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
 
-          <link
-            rel="stylesheet"
-            href="http://fonts.cdnfonts.com/css/gt-walsheim"
-          />
-
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
         </Head>
