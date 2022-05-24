@@ -1,4 +1,3 @@
-import AdbIcon from '@mui/icons-material/Adb'
 import SearchIcon from '@mui/icons-material/Search'
 import {
   Box,
@@ -7,7 +6,6 @@ import {
   IconButton,
   InputBase,
   Toolbar,
-  Typography,
 } from '@mui/material'
 import {alpha, styled} from '@mui/material/styles'
 import React from 'react'
@@ -67,6 +65,7 @@ const Navbar = () => {
             zIndex: 1,
             background: 'white',
             width: '100%',
+            boxShadow: 1,
           }}
         >
           <Container maxWidth="lg">

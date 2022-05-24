@@ -1,3 +1,3 @@
-const pages = ['Products', 'Pricing', 'Blog']
+const pages = ['Products', 'Contact', 'About Us']
 
 export {pages}

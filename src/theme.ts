@@ -5,10 +5,10 @@ import {red} from '@mui/material/colors'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#000',
     },
     secondary: {
-      main: '#19857b',
+      main: '#424141',
     },
     error: {
       main: red.A400,
@@ -22,6 +22,9 @@ const theme = createTheme({
       'Arial',
       'sans-serif',
     ].join(','),
+    button: {
+      textTransform: 'capitalize',
+    },
   },
 })
 

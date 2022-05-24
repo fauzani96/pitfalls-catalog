@@ -13,3 +13,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.carousel .slide img {
+  max-height: 250px; /* change this to whatever you want */
+  object-fit: cover;
+}
