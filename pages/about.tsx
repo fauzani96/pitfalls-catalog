@@ -4,7 +4,6 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Link from '../src/Link'
 
 const About: NextPage = () => {
   return (
@@ -19,9 +18,9 @@ const About: NextPage = () => {
         }}
       >
         <Box maxWidth="sm">
-          <Button variant="contained" component={Link} noLinkStyle href="/">
+          {/* <Button variant="contained" component={Link} noLinkStyle href="/">
             Go to the home page
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Container>
