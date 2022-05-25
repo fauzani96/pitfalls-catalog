@@ -9,6 +9,7 @@ import createEmotionCache from '../src/createEmotionCache'
 import theme from '../src/theme'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../styles/globals.css'
+import Copyright from '../src/Copyright'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -30,6 +31,7 @@ export default function MyApp(props: MyAppProps) {
         <CssBaseline />
         <Navbar />
         <Component {...pageProps} />
+        <Copyright />
       </ThemeProvider>
     </CacheProvider>
   )

@@ -34,12 +34,7 @@ const Home: NextPage = () => {
           <Explore />
           <Featured />
           <Intermezzo />
-
-          {/* <Link href="/about" color="secondary">
-            Go to the about page
-          </Link> */}
         </Box>
-        <Copyright />
       </Container>
     </>
   )

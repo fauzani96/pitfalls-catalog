@@ -1,9 +1,12 @@
 import AppsIcon from '@mui/icons-material/Apps'
-import {IconButton, Menu, MenuItem, Typography} from '@mui/material'
+import {Icon, IconButton, Menu, MenuItem} from '@mui/material'
+import {useRouter} from 'next/router'
 import React from 'react'
 import {pages} from '../../../constants/Pages.constant'
+import Link from '../../../Link'
 
 const MenuMobile = () => {
+  const router = useRouter()
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
@@ -35,9 +38,20 @@ const MenuMobile = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{page}</Typography>
+        {pages.map((page, i) => (
+          <MenuItem
+            key={i}
+            onClick={handleCloseUserMenu}
+            component={Link}
+            href={page.href}
+            sx={{
+              color:
+                router.pathname === page.href
+                  ? 'text.primary'
+                  : 'text.secondary',
+            }}
+          >
+            <Icon sx={{mr: 1}}>{page.icon}</Icon> {page.name}
           </MenuItem>
         ))}
       </Menu>

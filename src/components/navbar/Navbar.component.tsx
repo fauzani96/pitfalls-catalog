@@ -3,15 +3,19 @@ import {
   Box,
   Button,
   Container,
+  Icon,
   IconButton,
   InputBase,
   Toolbar,
 } from '@mui/material'
 import {alpha, styled} from '@mui/material/styles'
+import Image from 'next/image'
 import React from 'react'
 import {pages} from '../../constants/Pages.constant'
 import HideOnScroll from '../../hooks/HideonScroll.hook'
+import Link from '../../Link'
 import MenuMobile from './menu/Menu.component'
+import {useRouter} from 'next/router'
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -56,6 +60,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }))
 
 const Navbar = () => {
+  const router = useRouter()
   return (
     <>
       <HideOnScroll>
@@ -70,19 +75,36 @@ const Navbar = () => {
         >
           <Container maxWidth="lg">
             <Toolbar disableGutters>
-              {/* <Box sx={{position: 'relative', width: 200}}>
-                
-              </Box> */}
-
-              <img
+              <Link href="/">
+                <>
+                  <Image
+                    src="/images/logo.png"
+                    alt="logo"
+                    width="125"
+                    height="40"
+                    objectFit="contain"
+                  />
+                </>
+              </Link>
+              {/* <img
                 src="/images/logo.png" // Route of the image file
                 alt="Logo"
                 width="125"
-              />
+              /> */}
               <Box sx={{ml: 1, flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                {pages.map((page) => (
-                  <Button key={page} sx={{my: 2, display: 'block'}}>
-                    {page}
+                {pages.map((page, i) => (
+                  <Button
+                    key={i}
+                    sx={{my: 2, mx: 1}}
+                    component={Link}
+                    href={page.href}
+                    variant={
+                      router.pathname === page.href ? 'contained' : 'text'
+                    }
+                    size="small"
+                    startIcon={<Icon>{page.icon}</Icon>}
+                  >
+                    {page.name}
                   </Button>
                 ))}
               </Box>
