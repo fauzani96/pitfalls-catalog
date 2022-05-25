@@ -1,19 +1,30 @@
-import {Chip, Container, Typography} from '@mui/material'
+import {Chip, Container, Icon, IconButton, Typography} from '@mui/material'
 import {Box} from '@mui/system'
 import Image from 'next/image'
+import {useRouter} from 'next/router'
 import React from 'react'
 
 const Product = () => {
+  const router = useRouter()
   return (
     <Container
       maxWidth="lg"
       sx={{
-        my: 4,
+        mb: 4,
+        mt: 3,
       }}
     >
+      <Box sx={{display: 'flex', alignItems: 'center', mb: 2}}>
+        <IconButton color="primary" onClick={router.back}>
+          <Icon>arrow_back</Icon>
+        </IconButton>
+        <Typography variant="h5" sx={{fontWeight: 600, ml: 1}}>
+          Product
+        </Typography>
+      </Box>
       <Box
         sx={{
-          mb: 4,
+          mb: 2,
           display: 'flex',
           overflow: 'hidden',
           '&:hover': {overflow: 'auto', paddingBottom: 1},
