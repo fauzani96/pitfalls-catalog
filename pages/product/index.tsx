@@ -2,7 +2,6 @@ import {Chip, Container, Typography} from '@mui/material'
 import {Box} from '@mui/system'
 import Image from 'next/image'
 import React from 'react'
-import {Carousel} from 'react-responsive-carousel'
 
 const Product = () => {
   return (
@@ -12,28 +11,31 @@ const Product = () => {
         my: 4,
       }}
     >
-      <Carousel
-        showArrows={false}
-        showStatus={false}
-        showThumbs={false}
-        showIndicators={false}
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          overflow: 'hidden',
+          '&:hover': {overflow: 'auto', paddingBottom: 1},
+        }}
       >
-        {Array.from({length: 4}).map((res, i) => {
-          return (
-            <Chip key={i} label={`Category-${i}`} color="primary" sx={{m: 1}} />
-          )
-        })}
-      </Carousel>
-      {/* <Box sx={{display: 'flex', overflow: 'auto'}}>
         {Array.from({length: 20}).map((res, i) => {
           return (
-            <Chip key={i} label={`Category-${i}`} color="primary" sx={{m: 1}} />
+            <Chip
+              key={i}
+              label={`Category-${i}`}
+              color={i % 2 === 0 ? 'primary' : 'secondary'}
+              sx={{m: 1}}
+            />
           )
         })}
-      </Box> */}
+      </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
         {Array.from({length: 8}).map((res, i) => (
-          <Box sx={{width: {xs: 1 / 2, md: 1 / 4}, p: 1, mb: 1}} key={i}>
+          <Box
+            sx={{width: {xs: 1 / 2, md: 1 / 4}, p: 1, mb: 1, cursor: 'pointer'}}
+            key={i}
+          >
             <Box sx={{position: 'relative', height: 200}}>
               <Image
                 src="https://picsum.photos/1200"
