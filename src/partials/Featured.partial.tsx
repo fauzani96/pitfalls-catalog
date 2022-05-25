@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import * as React from 'react'
+import Link from '../Link'
 
 const Featured = () => {
   return (
@@ -25,17 +26,23 @@ const Featured = () => {
             alt=""
             layout="fill"
             objectFit="cover"
-            style={{borderRadius: 5}}
+            style={{borderRadius: 5, filter: 'blur(1px)'}}
           />
           <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
             <Typography
               sx={{
                 mb: 2,
+                color: 'white',
               }}
             >
               Lorem ipsum dolor sir amet
             </Typography>
-            <Button variant="contained" sx={{borderRadius: 50}}>
+            <Button
+              variant="contained"
+              sx={{borderRadius: 50}}
+              component={Link}
+              href="/product"
+            >
               shop
             </Button>
           </Box>
@@ -47,17 +54,23 @@ const Featured = () => {
             alt=""
             layout="fill"
             objectFit="cover"
-            style={{borderRadius: 5}}
+            style={{borderRadius: 5, filter: 'blur(1px)'}}
           />
           <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
             <Typography
               sx={{
                 mb: 2,
+                color: 'white',
               }}
             >
               Lorem ipsum dolor sir amet
             </Typography>
-            <Button variant="contained" sx={{borderRadius: 50}}>
+            <Button
+              variant="contained"
+              sx={{borderRadius: 50}}
+              component={Link}
+              href="/product"
+            >
               shop
             </Button>
           </Box>

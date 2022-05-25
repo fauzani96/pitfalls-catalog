@@ -4,7 +4,7 @@ import Container from '@mui/material/Container'
 import type {NextPage} from 'next'
 import * as React from 'react'
 import CarouselComponent from '../src/components/carousel/Carousel.component'
-import Copyright from '../src/Copyright'
+import Link from '../src/Link'
 // import Link from '../src/Link'
 import Explore from '../src/partials/Explore.partial'
 import Featured from '../src/partials/Featured.partial'
@@ -21,6 +21,8 @@ const Home: NextPage = () => {
         }}
         variant="contained"
         color="primary"
+        component={Link}
+        href="/product"
       >
         Get baju ini ASAP!
       </Button>

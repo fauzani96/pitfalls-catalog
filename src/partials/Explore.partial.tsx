@@ -2,6 +2,7 @@ import {Button} from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
+import Link from '../Link'
 
 const Explore = () => {
   return (
@@ -25,7 +26,12 @@ const Explore = () => {
         Lorem ipsum dolor sir amert. Lorem ipsum dolor sir amert.Lorem ipsum
         dolor sir amert
       </Typography>
-      <Button variant="contained" sx={{borderRadius: 50}}>
+      <Button
+        variant="contained"
+        sx={{borderRadius: 50}}
+        component={Link}
+        href="/product"
+      >
         explore our products
       </Button>
     </Box>
