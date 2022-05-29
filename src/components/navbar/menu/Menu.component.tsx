@@ -45,10 +45,9 @@ const MenuMobile = () => {
             component={Link}
             href={page.href}
             sx={{
-              color:
-                router.pathname === page.href
-                  ? 'text.primary'
-                  : 'text.secondary',
+              color: router.pathname.includes(page.href)
+                ? 'text.primary'
+                : 'text.secondary',
             }}
           >
             <Icon sx={{mr: 1}}>{page.icon}</Icon> {page.name}
