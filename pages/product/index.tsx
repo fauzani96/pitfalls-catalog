@@ -26,11 +26,11 @@ const Product = () => {
         sx={{
           mb: 2,
           display: 'flex',
-          overflow: 'hidden',
-          '&:hover': {overflow: 'auto', paddingBottom: 1},
+          overflow: 'auto',
+          // '&:hover': {overflow: 'auto', paddingBottom: 1},
         }}
       >
-        {Array.from({length: 20}).map((res, i) => {
+        {Array.from({length: 4}).map((res, i) => {
           return (
             <Chip
               key={i}
@@ -46,6 +46,7 @@ const Product = () => {
           <Box
             sx={{width: {xs: 1 / 2, md: 1 / 4}, p: 1, mb: 1, cursor: 'pointer'}}
             key={i}
+            onClick={() => router.push(`/product/${i}`)}
           >
             <Box sx={{position: 'relative', height: 200}}>
               <Image
