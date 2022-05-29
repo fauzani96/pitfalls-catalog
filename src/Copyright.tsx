@@ -7,7 +7,12 @@ import Image from 'next/image'
 export default function Copyright() {
   return (
     <Box
-      sx={{display: 'flex', flexFlow: 'column', alignItems: 'center', mt: 2}}
+      sx={{
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'center',
+        mt: 'auto',
+      }}
     >
       <Box
         sx={{

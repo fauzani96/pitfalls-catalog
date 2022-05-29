@@ -16,3 +16,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

@@ -44,7 +44,7 @@ const Featured = () => {
         </Images>
 
         <Images
-          url="https://picsum.photos/1000"
+          url="https://picsum.photos/1900"
           height={500}
           otherSx={{
             width: 1,

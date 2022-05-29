@@ -33,49 +33,61 @@ const DetailProduct = () => {
         Rp.200.000
       </Typography>
 
-      <Box sx={{position: 'relative', height: 300, my: 4}}>
-        <Image
-          src={url}
-          alt=""
-          objectFit="cover"
-          layout="fill"
-          style={{borderRadius: 12}}
-        />
-      </Box>
-      <Box sx={{display: 'flex', mb: 4}}>
-        {Array.from({length: 5}).map((res, i) => {
-          const _url = `https://picsum.photos/1${i}00`
-          return (
-            <Box
-              sx={{
-                width: {xs: 1 / 3, md: 1 / 4},
-                px: 1,
-                cursor: 'pointer',
-              }}
-              key={i}
-              onClick={() => setUrl(_url)}
-            >
-              <Images
-                url={_url}
-                height={125}
-                otherSx={{
-                  border: url === _url ? '1px solid' : 0,
-                  borderRadius: 2,
-                }}
-              />
-            </Box>
-          )
-        })}
-      </Box>
-      <Typography variant="h6">Size</Typography>
-      <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-        {size.map((res, i) => (
-          <Box sx={{width: {xs: 1 / 3, md: 1 / 5}}} key={i}>
-            <Typography>{res.size}</Typography>
-            <Typography>Width : {res.width}</Typography>
-            <Typography>Height : {res.height}</Typography>
+      <Box sx={{display: {xs: 'block', md: 'flex'}, mt: 4}}>
+        <Box sx={{width: {md: 3 / 4}}}>
+          <Images
+            url={url}
+            height={300}
+            otherSx={{
+              mb: 4,
+              width: 1,
+            }}
+          />
+          <Box sx={{display: 'flex', mb: 4}}>
+            {Array.from({length: 5}).map((res, i) => {
+              const _url = `https://picsum.photos/1${i}00`
+              return (
+                <Box
+                  sx={{
+                    width: {xs: 1 / 3, md: 1 / 4},
+                    px: 1,
+                    cursor: 'pointer',
+                  }}
+                  key={i}
+                  onClick={() => setUrl(_url)}
+                >
+                  <Images
+                    url={_url}
+                    height={125}
+                    otherSx={{
+                      border: url === _url ? '2px solid' : 0,
+                      borderRadius: 2,
+                    }}
+                  />
+                </Box>
+              )
+            })}
           </Box>
-        ))}
+        </Box>
+        <Box sx={{width: {md: 1 / 4}, pl: {md: 4}}}>
+          <Typography variant="h6">Size</Typography>
+          <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
+            {size.map((res, i) => (
+              <Box
+                sx={{width: {xs: 1 / 3, md: 2 / 5}, mt: 2, mr: {md: 1}}}
+                key={i}
+              >
+                <Typography gutterBottom>{res.size}</Typography>
+                <Typography variant="body2" color="secondary">
+                  Width : {res.width} cm
+                </Typography>
+                <Typography variant="body2" color="secondary">
+                  Height : {res.height} cm
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </Box>
     </Container>
   )
