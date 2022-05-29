@@ -6,10 +6,19 @@ type ImageProps = {
   url: string
   height: number
   otherSx?: any
+  radius?: boolean
+  otherImgSx?: any
+  children?: React.ReactNode
 }
 
-const Images = (props: ImageProps) => {
-  const {url, height, otherSx} = props
+const Images = ({
+  url,
+  height,
+  otherSx,
+  radius = true,
+  otherImgSx,
+  children,
+}: ImageProps) => {
   return (
     <Box sx={{height, position: 'relative', ...otherSx}}>
       <Image
@@ -17,8 +26,9 @@ const Images = (props: ImageProps) => {
         alt="image"
         objectFit="cover"
         layout="fill"
-        style={{borderRadius: 8}}
+        style={{borderRadius: radius ? 8 : 0, ...otherImgSx}}
       />
+      {children}
     </Box>
   )
 }
