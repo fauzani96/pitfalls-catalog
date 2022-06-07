@@ -27,7 +27,6 @@ const Product = () => {
           mb: 2,
           display: 'flex',
           overflow: 'auto',
-          // '&:hover': {overflow: 'auto', paddingBottom: 1},
         }}
       >
         {Array.from({length: 4}).map((res, i) => {

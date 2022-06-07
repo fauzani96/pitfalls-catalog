@@ -1,7 +1,8 @@
 import SearchIcon from '@mui/icons-material/Search'
-import {Autocomplete, InputBase, styled, TextField} from '@mui/material'
+import {Autocomplete, InputBase, styled} from '@mui/material'
 import {useRouter} from 'next/router'
 import React, {useEffect} from 'react'
+import {Category} from '../../../constants/Category.constant'
 import {product} from '../../../constants/Product.constant'
 
 const SearchIconWrapper = styled('div')(({theme}) => ({
@@ -49,6 +50,10 @@ const Searchs = () => {
         disableClearable
         options={product}
         freeSolo
+        getOptionLabel={(option) => option.name}
+        renderOption={(props, option) =>
+          `${option.name} - ${Category[option.category]}`
+        }
         sx={{width: 200}}
         onChange={(event: any, newValue: any | null) => {
           setValue(newValue)
