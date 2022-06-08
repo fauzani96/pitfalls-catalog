@@ -1,4 +1,11 @@
-import {Chip, Container, Icon, IconButton, Typography} from '@mui/material'
+import {
+  Button,
+  Chip,
+  Container,
+  Icon,
+  IconButton,
+  Typography,
+} from '@mui/material'
 import {Box} from '@mui/system'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
@@ -33,6 +40,25 @@ const Product: FC<Props> = ({productData, categoryData}) => {
   console.log(categoryData)
   const [selectedCat, setCat] = useState<number | false>(false)
   const router = useRouter()
+
+  const submitData = async () => {
+    try {
+      const body = {
+        name: 'asd',
+        categoryId: 1,
+        imgSrc: 'https://picsum.photos/200/300',
+        price: 140000,
+      }
+      await fetch('/api/product', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body),
+      })
+      // await Router.push('/drafts')
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <Container
       maxWidth="lg"
@@ -41,6 +67,9 @@ const Product: FC<Props> = ({productData, categoryData}) => {
         mt: 3,
       }}
     >
+      <Button variant="contained" onClick={submitData}>
+        Post
+      </Button>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2}}>
         <IconButton color="primary" onClick={router.back}>
           <Icon>arrow_back</Icon>
