@@ -37,7 +37,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Product: FC<Props> = ({productData, categoryData}) => {
-  console.log(categoryData)
   const [selectedCat, setCat] = useState<number | false>(false)
   const router = useRouter()
 
@@ -67,9 +66,9 @@ const Product: FC<Props> = ({productData, categoryData}) => {
         mt: 3,
       }}
     >
-      <Button variant="contained" onClick={submitData}>
+      {/* <Button variant="contained" onClick={submitData}>
         Post
-      </Button>
+      </Button> */}
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2}}>
         <IconButton color="primary" onClick={router.back}>
           <Icon>arrow_back</Icon>
