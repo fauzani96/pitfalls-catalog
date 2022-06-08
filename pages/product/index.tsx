@@ -2,9 +2,30 @@ import {Chip, Container, Icon, IconButton, Typography} from '@mui/material'
 import {Box} from '@mui/system'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import React from 'react'
+import React, {FC} from 'react'
+import {Category} from '../../src/constants/Category.constant'
+import {product} from '../../src/constants/Product.constant'
+import prisma from '../../lib/prisma'
+import {GetStaticProps} from 'next'
 
-const Product = () => {
+interface Product {
+  id: number
+  categoryId: number
+  price: number
+  name: string
+}
+
+type Props = {
+  productData: Product
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const productData = await prisma.product.findMany({})
+  return {props: {productData}}
+}
+
+const Product: FC<Props> = ({productData}) => {
+  console.log(productData)
   const router = useRouter()
   return (
     <Container
@@ -41,7 +62,7 @@ const Product = () => {
         })}
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-        {Array.from({length: 8}).map((res, i) => (
+        {product.map((prod, i) => (
           <Box
             sx={{width: {xs: 1 / 2, md: 1 / 4}, p: 1, mb: 1, cursor: 'pointer'}}
             key={i}
@@ -56,12 +77,22 @@ const Product = () => {
                 style={{borderRadius: 10}}
               />
             </Box>
-            <Typography gutterBottom sx={{mt: 1}}>
-              Oversized T-shirt
-            </Typography>
-            <Typography color="text.secondary" variant="body2">
-              $20.00
-            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: {xs: 'column', md: 'row'},
+                justifyContent: 'space-between',
+                mt: 1,
+              }}
+            >
+              <div>
+                <Typography gutterBottom>{prod.name}</Typography>
+                <Typography color="text.secondary" variant="body2">
+                  {Category[prod.category]}
+                </Typography>
+              </div>
+              <Typography variant="h6">$20.00</Typography>
+            </Box>
           </Box>
         ))}
       </Box>

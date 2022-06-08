@@ -51,10 +51,10 @@ const Searchs = () => {
         options={product}
         freeSolo
         getOptionLabel={(option) => option.name}
-        renderOption={(props, option) =>
-          `${option.name} - ${Category[option.category]}`
-        }
-        sx={{width: 200}}
+        renderOption={(props, option) => (
+          <li {...props}>{`${option.name} - ${Category[option.category]}`}</li>
+        )}
+        sx={{width: 250}}
         onChange={(event: any, newValue: any | null) => {
           setValue(newValue)
           if (newValue) {

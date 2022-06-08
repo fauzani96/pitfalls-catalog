@@ -87,6 +87,7 @@ const Navbar = () => {
                   flexGrow: 0,
                   visibility: {xs: 'visible', md: 'hidden'},
                   display: 'flex',
+                  ml: 1,
                 }}
               >
                 {searchMobile ? (
