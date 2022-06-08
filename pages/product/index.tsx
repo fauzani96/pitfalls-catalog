@@ -4,7 +4,7 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import React, {FC, useState} from 'react'
 import {Category} from '../../src/constants/Category.constant'
-import prisma from '../../lib/prisma'
+import {prisma} from '../../lib/prisma'
 import {GetStaticProps} from 'next'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 
