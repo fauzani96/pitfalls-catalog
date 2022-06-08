@@ -2,30 +2,36 @@ import {Chip, Container, Icon, IconButton, Typography} from '@mui/material'
 import {Box} from '@mui/system'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import {Category} from '../../src/constants/Category.constant'
-import {product} from '../../src/constants/Product.constant'
 import prisma from '../../lib/prisma'
 import {GetStaticProps} from 'next'
+import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 
-interface Product {
+type Product = {
   id: number
   categoryId: number
   price: number
   name: string
+  imgSrc: string
 }
 
+type Category = {id: number; name: string}
+
 type Props = {
-  productData: Product
+  productData: Product[]
+  categoryData: Category[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const productData = await prisma.product.findMany({})
-  return {props: {productData}}
+  const categoryData = await prisma.category.findMany({})
+  return {props: {productData, categoryData}}
 }
 
-const Product: FC<Props> = ({productData}) => {
-  console.log(productData)
+const Product: FC<Props> = ({productData, categoryData}) => {
+  console.log(categoryData)
+  const [selectedCat, setCat] = useState<number | false>(false)
   const router = useRouter()
   return (
     <Container
@@ -50,51 +56,61 @@ const Product: FC<Props> = ({productData}) => {
           overflow: 'auto',
         }}
       >
-        {Array.from({length: 4}).map((res, i) => {
+        {categoryData.map((categ, i) => {
           return (
             <Chip
               key={i}
-              label={`Category-${i}`}
-              color={i % 2 === 0 ? 'primary' : 'secondary'}
+              label={categ.name}
+              color={selectedCat === categ.id ? 'primary' : 'secondary'}
               sx={{m: 1}}
+              onClick={() => setCat(categ.id)}
             />
           )
         })}
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-        {product.map((prod, i) => (
-          <Box
-            sx={{width: {xs: 1 / 2, md: 1 / 4}, p: 1, mb: 1, cursor: 'pointer'}}
-            key={i}
-            onClick={() => router.push(`/product/${i}`)}
-          >
-            <Box sx={{position: 'relative', height: 200}}>
-              <Image
-                src="https://picsum.photos/1200"
-                alt=""
-                objectFit="cover"
-                layout="fill"
-                style={{borderRadius: 10}}
-              />
-            </Box>
+        {productData.map((prod: Product, i: number) => {
+          return (
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: {xs: 'column', md: 'row'},
-                justifyContent: 'space-between',
-                mt: 1,
+                width: {xs: 1 / 2, md: 1 / 4},
+                p: 1,
+                mb: 1,
+                cursor: 'pointer',
               }}
+              key={i}
+              onClick={() => router.push(`/product/${i}`)}
             >
-              <div>
-                <Typography gutterBottom>{prod.name}</Typography>
-                <Typography color="text.secondary" variant="body2">
-                  {Category[prod.category]}
+              <Box sx={{position: 'relative', height: 200}}>
+                <Image
+                  src={prod.imgSrc}
+                  alt=""
+                  objectFit="cover"
+                  layout="fill"
+                  style={{borderRadius: 10}}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: {xs: 'column', md: 'row'},
+                  justifyContent: 'space-between',
+                  mt: 1,
+                }}
+              >
+                <div>
+                  <Typography gutterBottom>{prod.name}</Typography>
+                  <Typography color="text.secondary" variant="body2">
+                    {Category[prod.categoryId]}
+                  </Typography>
+                </div>
+                <Typography variant="h6">
+                  {convertToRoundedRupiah(prod.price, false)}
                 </Typography>
-              </div>
-              <Typography variant="h6">$20.00</Typography>
+              </Box>
             </Box>
-          </Box>
-        ))}
+          )
+        })}
       </Box>
     </Container>
   )

@@ -14,7 +14,7 @@ model product {
   id         Int       @id @default(autoincrement())
   name       String
   categoryId Int?
-  price      Int
+  price      Int       @default(140000)
   category   category? @relation(fields: [categoryId], references: [id])
   imgSrc     String    @default("https://picsum.photos/500")
 }
