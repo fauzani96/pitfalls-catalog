@@ -8,13 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "vercel-build": "prisma generate && npm run migrate:deploy && next build",
-    "prisma:generate:dataproxy": "PRISMA_CLIENT_ENGINE_TYPE=\"dataproxy\" prisma generate",
-    "prisma:generate:library": "PRISMA_CLIENT_ENGINE_TYPE=\"library\" prisma generate",
-    "migrate:deploy": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
