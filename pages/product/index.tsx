@@ -10,12 +10,13 @@ import {Box} from '@mui/system'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import React, {FC, useState} from 'react'
-import {Category} from '../../src/constants/Category.constant'
+import {Category, categoryData} from '../../src/constants/Category.constant'
 import prisma from '../../lib/prisma'
 import {GetStaticProps} from 'next'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
+import {productData} from '../../src/constants/Product.constant'
 
-type Product = {
+type ProductType = {
   id: number
   categoryId: number
   price: number
@@ -23,16 +24,14 @@ type Product = {
   imgSrc: string
 }
 
-type Category = {id: number; name: string}
+type CategoryType = {id: number; name: string}
 
 type Props = {
-  productData: Product[]
-  categoryData: Category[]
+  productData: ProductType[]
+  categoryData: CategoryType[]
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const productData = await prisma.product.findMany({})
-  const categoryData = await prisma.category.findMany({})
+export const getStaticProps: GetStaticProps = () => {
   return {props: {productData, categoryData}}
 }
 
@@ -40,24 +39,27 @@ const Product: FC<Props> = ({productData, categoryData}) => {
   const [selectedCat, setCat] = useState<number | false>(false)
   const router = useRouter()
 
-  const submitData = async () => {
-    try {
-      const body = {
-        name: 'asd',
-        categoryId: 1,
-        imgSrc: 'https://picsum.photos/200/300',
-        price: 140000,
-      }
-      await fetch('/api/product', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(body),
-      })
-      // await Router.push('/drafts')
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // const submitData = async () => {
+  //   try {
+  //     const body = {
+  //       name: 'asd',
+  //       categoryId: 1,
+  //       imgSrc: 'https://picsum.photos/200/300',
+  //       price: 140000,
+  //     }
+  //     await fetch('/api/product', {
+  //       method: 'POST',
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: JSON.stringify(body),
+  //     })
+  //     // await Router.push('/drafts')
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
+  console.log(selectedCat, categoryData)
+
   return (
     <Container
       maxWidth="lg"
@@ -66,9 +68,9 @@ const Product: FC<Props> = ({productData, categoryData}) => {
         mt: 3,
       }}
     >
-      <Button variant="contained" onClick={submitData}>
+      {/* <Button variant="contained" onClick={submitData}>
         Post
-      </Button>
+      </Button> */}
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2}}>
         <IconButton color="primary" onClick={router.back}>
           <Icon>arrow_back</Icon>
@@ -97,7 +99,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
         })}
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-        {productData.map((prod: Product, i: number) => {
+        {productData.map((prod: ProductType, i: number) => {
           return (
             <Box
               sx={{

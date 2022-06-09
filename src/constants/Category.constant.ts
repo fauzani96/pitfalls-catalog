@@ -7,3 +7,18 @@ export const Category: CategoryProps = {
   2: 'Long Sleeve',
   3: 'Hoodie',
 }
+
+export const categoryData = [
+  {
+    id: 1,
+    name: 'T Shirt',
+  },
+  {
+    id: 2,
+    name: 'Long Sleeve',
+  },
+  {
+    id: 3,
+    name: 'Hoodie',
+  },
+]

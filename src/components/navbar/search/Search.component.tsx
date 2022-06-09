@@ -3,7 +3,7 @@ import {Autocomplete, InputBase, styled} from '@mui/material'
 import {useRouter} from 'next/router'
 import React, {useEffect} from 'react'
 import {Category} from '../../../constants/Category.constant'
-import {product} from '../../../constants/Product.constant'
+import {productData} from '../../../constants/Product.constant'
 
 const SearchIconWrapper = styled('div')(({theme}) => ({
   padding: theme.spacing(0, 2),
@@ -48,11 +48,13 @@ const Searchs = () => {
         }}
         disablePortal
         disableClearable
-        options={product}
+        options={productData}
         freeSolo
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
-          <li {...props}>{`${option.name} - ${Category[option.category]}`}</li>
+          <li {...props}>{`${option.name} - ${
+            Category[option.categoryId]
+          }`}</li>
         )}
         sx={{width: 250}}
         onChange={(event: any, newValue: any | null) => {
