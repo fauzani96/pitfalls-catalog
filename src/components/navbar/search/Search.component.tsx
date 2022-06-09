@@ -60,7 +60,7 @@ const Searchs = () => {
         onChange={(event: any, newValue: any | null) => {
           setValue(newValue)
           if (newValue) {
-            router.push(`/product/${newValue.year}`)
+            router.push(`/product/${newValue.id}`)
           }
         }}
         renderInput={(params) => {
