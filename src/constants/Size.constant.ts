@@ -1,9 +1,8 @@
 const size = [
-  {size: 'S', height: 70, width: 49},
-  {size: 'M', height: 73, width: 52},
-  {size: 'L', height: 76, width: 55},
-  {size: 'XL', height: 79, width: 58},
-  {size: 'XXL', height: 82, width: 61},
+  {size: 'S', height: 69, width: 49, sleeve: 19},
+  {size: 'M', height: 72, width: 52, sleeve: 20},
+  {size: 'L', height: 75, width: 55, sleeve: 21},
+  {size: 'XL', height: 78, width: 58, sleeve: 22},
 ]
 
 export {size}
