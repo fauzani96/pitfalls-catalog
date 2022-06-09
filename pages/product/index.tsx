@@ -1,7 +1,8 @@
 import {
-  Button,
+  // Button,
   Chip,
   Container,
+  Divider,
   Icon,
   IconButton,
   Typography,
@@ -11,7 +12,7 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import React, {FC, useState} from 'react'
 import {Category, categoryData} from '../../src/constants/Category.constant'
-import prisma from '../../lib/prisma'
+// import prisma from '../../lib/prisma'
 import {GetStaticProps} from 'next'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 import {productData} from '../../src/constants/Product.constant'
@@ -58,7 +59,9 @@ const Product: FC<Props> = ({productData, categoryData}) => {
   //   }
   // }
 
-  console.log(selectedCat, categoryData)
+  const handleCategory = (id: number) => {
+    setCat(() => (id === selectedCat ? false : id))
+  }
 
   return (
     <Container
@@ -93,54 +96,61 @@ const Product: FC<Props> = ({productData, categoryData}) => {
               label={categ.name}
               color={selectedCat === categ.id ? 'primary' : 'secondary'}
               sx={{m: 1}}
-              onClick={() => setCat(categ.id)}
+              onClick={() => handleCategory(categ.id)}
             />
           )
         })}
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-        {productData.map((prod: ProductType, i: number) => {
-          return (
-            <Box
-              sx={{
-                width: {xs: 1 / 2, md: 1 / 4},
-                p: 1,
-                mb: 1,
-                cursor: 'pointer',
-              }}
-              key={i}
-              onClick={() => router.push(`/product/${i}`)}
-            >
-              <Box sx={{position: 'relative', height: 200}}>
-                <Image
-                  src={prod.imgSrc}
-                  alt=""
-                  objectFit="cover"
-                  layout="fill"
-                  style={{borderRadius: 10}}
-                />
-              </Box>
+        {productData
+          .filter((i) => (selectedCat ? i.categoryId === selectedCat : i))
+          .map((prod: ProductType, i: number) => {
+            return (
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: {xs: 'column', md: 'row'},
-                  justifyContent: 'space-between',
-                  mt: 1,
+                  width: {xs: 1 / 2, md: 1 / 4},
+                  p: {xs: 1, md: 3},
+                  mb: 1,
+                  cursor: 'pointer',
                 }}
+                key={i}
+                onClick={() => router.push(`/product/${i}`)}
               >
-                <div>
-                  <Typography gutterBottom>{prod.name}</Typography>
-                  <Typography color="text.secondary" variant="body2">
-                    {Category[prod.categoryId]}
+                <Box
+                  sx={{
+                    position: 'relative',
+                    height: 200,
+                  }}
+                >
+                  <Image
+                    src={prod.imgSrc}
+                    alt=""
+                    objectFit="cover"
+                    layout="fill"
+                    style={{borderRadius: 10}}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: {xs: 'column', md: 'row'},
+                    justifyContent: 'space-between',
+                    mt: 1,
+                  }}
+                >
+                  <div>
+                    <Typography gutterBottom>{prod.name}</Typography>
+                    <Typography color="text.secondary" variant="body2">
+                      {Category[prod.categoryId]}
+                    </Typography>
+                  </div>
+                  <Typography variant="h6">
+                    {convertToRoundedRupiah(prod.price, false)}
                   </Typography>
-                </div>
-                <Typography variant="h6">
-                  {convertToRoundedRupiah(prod.price, false)}
-                </Typography>
+                </Box>
               </Box>
-            </Box>
-          )
-        })}
+            )
+          })}
       </Box>
     </Container>
   )
