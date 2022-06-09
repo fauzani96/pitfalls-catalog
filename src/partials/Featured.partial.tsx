@@ -14,7 +14,7 @@ const Featured = () => {
       </Typography>
       <Box sx={{display: {xs: 'block', md: 'flex'}}}>
         <Images
-          url="https://picsum.photos/1000"
+          url="https://i.postimg.cc/ZKJbtPBd/DSC05751.jpg"
           height={500}
           otherSx={{
             width: 1,
@@ -30,7 +30,7 @@ const Featured = () => {
                 color: 'white',
               }}
             >
-              Lorem ipsum dolor sir amet
+              Motel White
             </Typography>
             <Button
               variant="contained"
@@ -44,7 +44,7 @@ const Featured = () => {
         </Images>
 
         <Images
-          url="https://picsum.photos/1900"
+          url="https://i.postimg.cc/4N13m2kP/DSC05632.jpg"
           height={500}
           otherSx={{
             width: 1,
@@ -60,7 +60,7 @@ const Featured = () => {
                 color: 'white',
               }}
             >
-              Lorem ipsum dolor sir amet
+              Suspiria
             </Typography>
             <Button
               variant="contained"

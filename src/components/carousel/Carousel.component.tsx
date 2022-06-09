@@ -5,7 +5,7 @@ import Images from '../image/Image.component'
 const CarouselComponent = () => (
   <Carousel autoPlay showArrows={false} showStatus={false} showThumbs={false}>
     <Images
-      url="https://picsum.photos/1300"
+      url="https://cf.shopee.co.id/file/dd2640f00858423db6bca11dba4b63bb"
       height={250}
       otherSx={{
         width: 1,
@@ -13,7 +13,7 @@ const CarouselComponent = () => (
       radius={false}
     />
     <Images
-      url="https://picsum.photos/1400"
+      url="https://cf.shopee.co.id/file/a1acdb72c8a54afe488d4778194fcf18"
       height={250}
       otherSx={{
         width: 1,
@@ -21,7 +21,7 @@ const CarouselComponent = () => (
       radius={false}
     />
     <Images
-      url="https://picsum.photos/1600"
+      url="https://cf.shopee.co.id/file/c74c015604dd2f342a517e967000656f"
       height={250}
       otherSx={{
         width: 1,
@@ -29,7 +29,7 @@ const CarouselComponent = () => (
       radius={false}
     />
     <Images
-      url="https://picsum.photos/1500"
+      url="https://cf.shopee.co.id/file/ae7a74d5da530dbfe0a96865e7811c78"
       height={250}
       otherSx={{
         width: 1,

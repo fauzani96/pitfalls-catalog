@@ -9,6 +9,7 @@ type ImageProps = {
   radius?: boolean
   otherImgSx?: any
   children?: React.ReactNode
+  objectFit?: string
 }
 
 const Images = ({
@@ -18,13 +19,15 @@ const Images = ({
   radius = true,
   otherImgSx,
   children,
+  objectFit = 'cover',
 }: ImageProps) => {
   return (
     <Box sx={{height, position: 'relative', ...otherSx}}>
       <Image
         src={url}
         alt="image"
-        objectFit="cover"
+        // @ts-ignore
+        objectFit={objectFit}
         layout="fill"
         style={{borderRadius: radius ? 8 : 0, ...otherImgSx}}
       />

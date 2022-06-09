@@ -12,17 +12,29 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Images from '../../src/components/image/Image.component'
+import {Category} from '../../src/constants/Category.constant'
+import {productData} from '../../src/constants/Product.constant'
 import {size} from '../../src/constants/Size.constant'
+import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 
 const DetailProduct = () => {
-  const [open, setOpen] = useState<boolean>(false)
   const router = useRouter()
-  const [url, setUrl] = useState('https://picsum.photos/1200')
+  // @ts-ignore
+  let id: string = router.query.productid
+  const item = productData.find((x) => x.id === id)
+  const [open, setOpen] = useState<boolean>(false)
+  const [url, setUrl] = useState('')
   const handleOpen = () => setOpen(!open)
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
+
+  useEffect(() => {
+    if (item) {
+      setUrl(item.imgSrc)
+    }
+  }, [item])
 
   return (
     <Container
@@ -37,27 +49,29 @@ const DetailProduct = () => {
           <Icon>arrow_back</Icon>
         </IconButton>
         <Typography variant="h5" sx={{fontWeight: 600, ml: 1}}>
-          Oversized T-Shirt
+          {item?.name}
         </Typography>
       </Box>
 
       <Typography variant="body1" gutterBottom>
-        T-Shirt
+        {item && Category[item.categoryId]}
       </Typography>
       <Typography variant="body2" color="textSecondary">
-        Rp.200.000
+        {item && convertToRoundedRupiah(parseInt(item.price), false)}
       </Typography>
 
       <Box sx={{display: {xs: 'block', md: 'flex'}, mt: 4}}>
         <Box sx={{width: {md: 3 / 4}}}>
-          <Images
-            url={url}
-            height={300}
-            otherSx={{
-              mb: 4,
-              width: 1,
-            }}
-          />
+          {url && (
+            <Images
+              url={url}
+              height={300}
+              otherSx={{
+                mb: 4,
+                width: 1,
+              }}
+            />
+          )}
           <Box sx={{display: 'flex', mb: 4}}>
             {Array.from({length: 5}).map((res, i) => {
               const _url = `https://picsum.photos/1${i}00`
@@ -117,7 +131,7 @@ const DetailProduct = () => {
           </Box>
         </Box>
       </Box>
-      <Dialog open={open} onClose={handleOpen} fullScreen={fullScreen}>
+      <Dialog open={open} onClose={handleOpen} fullWidth={fullScreen}>
         <Fab
           onClick={handleOpen}
           color="primary"

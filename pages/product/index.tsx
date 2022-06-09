@@ -17,7 +17,7 @@ import {GetStaticProps} from 'next'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 import {productData} from '../../src/constants/Product.constant'
 
-type ProductType = {
+export type ProductType = {
   id: string
   categoryId: string
   price: string
@@ -116,7 +116,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                   cursor: 'pointer',
                 }}
                 key={i}
-                onClick={() => router.push(`/product/${parseInt(prod.id)}`)}
+                onClick={() => router.push(`/product/${prod.id}`)}
               >
                 <Box
                   sx={{

@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         component={Link}
         href="/product"
       >
-        Get baju ini ASAP!
+        Happy & Enjoy Shopping
       </Button>
       <CarouselComponent />
       <Container maxWidth="lg">
