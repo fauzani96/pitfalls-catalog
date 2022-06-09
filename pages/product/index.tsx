@@ -18,9 +18,9 @@ import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 import {productData} from '../../src/constants/Product.constant'
 
 type ProductType = {
-  id: number
-  categoryId: number
-  price: number
+  id: string
+  categoryId: string
+  price: string
   name: string
   imgSrc: string
 }
@@ -103,7 +103,9 @@ const Product: FC<Props> = ({productData, categoryData}) => {
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
         {productData
-          .filter((i) => (selectedCat ? i.categoryId === selectedCat : i))
+          .filter((i) =>
+            selectedCat ? parseInt(i.categoryId) === selectedCat : i
+          )
           .map((prod: ProductType, i: number) => {
             return (
               <Box
@@ -114,7 +116,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                   cursor: 'pointer',
                 }}
                 key={i}
-                onClick={() => router.push(`/product/${i}`)}
+                onClick={() => router.push(`/product/${parseInt(prod.id)}`)}
               >
                 <Box
                   sx={{
@@ -145,7 +147,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                     </Typography>
                   </div>
                   <Typography variant="h6">
-                    {convertToRoundedRupiah(prod.price, false)}
+                    {convertToRoundedRupiah(parseInt(prod.price), false)}
                   </Typography>
                 </Box>
               </Box>
