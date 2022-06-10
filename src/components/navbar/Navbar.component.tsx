@@ -1,30 +1,14 @@
-import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
+import SearchIcon from '@mui/icons-material/Search'
 import {Box, Button, Container, Icon, IconButton, Toolbar} from '@mui/material'
-import {alpha, styled} from '@mui/material/styles'
 import Image from 'next/image'
-import React, {useEffect, useState} from 'react'
+import {useRouter} from 'next/router'
+import {useEffect, useState} from 'react'
 import {pages} from '../../constants/Pages.constant'
 import HideOnScroll from '../../hooks/HideonScroll.hook'
 import Link from '../../Link'
 import MenuMobile from './menu/Menu.component'
-import {useRouter} from 'next/router'
 import Searchs from './search/Search.component'
-
-const Search = styled('div')(({theme}) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.05),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.15),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}))
 
 const Navbar = () => {
   const [searchMobile, setSearchMobile] = useState<boolean | HTMLElement>(false)
@@ -77,10 +61,8 @@ const Navbar = () => {
                 ))}
               </Box>
               <Box sx={{flexGrow: 4}} />
-              <Box sx={{flexGrow: 0}}>
-                <Search sx={{display: {xs: 'none', md: 'block'}}}>
-                  <Searchs />
-                </Search>
+              <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'block'}}}>
+                <Searchs />
               </Box>
               <Box
                 sx={{
@@ -92,9 +74,8 @@ const Navbar = () => {
               >
                 {searchMobile ? (
                   <>
-                    <Search>
-                      <Searchs />
-                    </Search>
+                    <Searchs />
+
                     <IconButton onClick={handleSearchMobile} size="small">
                       <CloseIcon />
                     </IconButton>

@@ -28,7 +28,7 @@ const DetailProduct = () => {
   const [url, setUrl] = useState('')
   const handleOpen = () => setOpen(!open)
   const theme = useTheme()
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     if (item) {
@@ -65,7 +65,8 @@ const DetailProduct = () => {
           {url && (
             <Images
               url={url}
-              height={300}
+              height={isMobile ? 350 : 600}
+              objectFit="contain"
               otherSx={{
                 mb: 4,
                 width: 1,
@@ -131,7 +132,7 @@ const DetailProduct = () => {
           </Box>
         </Box>
       </Box>
-      <Dialog open={open} onClose={handleOpen} fullWidth={fullScreen}>
+      <Dialog open={open} onClose={handleOpen} fullWidth={isMobile}>
         <Fab
           onClick={handleOpen}
           color="primary"
