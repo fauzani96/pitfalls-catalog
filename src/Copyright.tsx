@@ -17,7 +17,7 @@ export default function Copyright() {
       <Box
         sx={{
           display: 'flex',
-          width: 100,
+          width: 125,
           justifyContent: 'space-between',
           mb: 1,
         }}
@@ -25,6 +25,7 @@ export default function Copyright() {
         <Image src="/images/instagram.svg" width="25" height="25" />
         <Image src="/images/shopee.svg" width="25" height="25" />
         <Image src="/images/whatsapp.svg" width="25" height="25" />
+        <Image src="/images/tokped.png" width="25" height="25" />
       </Box>
       <Typography
         variant="body2"
