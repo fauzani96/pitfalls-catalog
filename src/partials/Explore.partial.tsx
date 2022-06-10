@@ -6,25 +6,23 @@ import Link from '../Link'
 
 const Explore = () => {
   return (
-    <Box sx={{mb: 6}}>
-      <Typography variant="body1" sx={{mb: 1, fontWeight: 600}}>
+    <Box sx={{mb: 6, mt: 6}}>
+      {/* <Typography variant="body1" sx={{mb: 1, fontWeight: 600}}>
         Lorem ipsum
-      </Typography>
+      </Typography> */}
       <Box
         sx={{
           mb: 2,
           fontSize: {xs: 48, md: 64},
           fontWeight: 'bold',
           lineHeight: 0.8,
+          mt: 2,
         }}
       >
-        Bold like before.
-        <br />
-        Build for the next.
+        LOOKBOOK
       </Box>
       <Typography variant="body1" sx={{mb: 2}}>
-        Lorem ipsum dolor sir amert. Lorem ipsum dolor sir amert.Lorem ipsum
-        dolor sir amert
+        Lookbook & catalogue Pitfalls Design Official
       </Typography>
       <Button
         variant="contained"
