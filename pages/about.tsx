@@ -1,26 +1,46 @@
-import Box from '@mui/material/Box'
+import {Typography} from '@mui/material'
 import Container from '@mui/material/Container'
 import type {NextPage} from 'next'
-import * as React from 'react'
+import {useRouter} from 'next/router'
 
 const About: NextPage = () => {
+  const router = useRouter()
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+    <Container maxWidth="lg" sx={{mb: 4, mt: 3}}>
+      {/* <Box sx={{display: 'flex', alignItems: 'center', mb: 2}}>
+        <IconButton color="primary" onClick={router.back}>
+          <Icon>arrow_back</Icon>
+        </IconButton>
+        <Typography variant="h5" sx={{fontWeight: 600, ml: 1}}>
+          About us
+        </Typography>
+      </Box> */}
+      <Typography
+        variant="h6"
+        paragraph
+        align="center"
+        sx={{fontWeight: 'bold'}}
       >
-        <Box maxWidth="sm">
-          {/* <Button variant="contained" component={Link} noLinkStyle href="/">
-            Go to the home page
-          </Button> */}
-        </Box>
-      </Box>
+        PITFALLS DESIGN
+      </Typography>
+      <Typography paragraph align="justify">
+        We believe in creativity and freedom. They set the trends. They shape
+        the industry. As we went online and expanded into more learning areas,
+        we stayed true to only working with the best. But we didn`t stop there.
+        We want our product reflects how we perceived the world and surrounding.
+        This is our main signature. As simple as that. Customized logo designed
+        for the exact purpose to symbolize our identity and ideals.
+      </Typography>
+
+      <Typography paragraph align="justify">
+        This is our main signature. As simple as that. Customized logo designed
+        for the exact purpose to symbolize our identity and ideals.
+      </Typography>
+      {/* <Box sx={{textAlign: 'center', mt: 8}}>
+        <Fab color="primary" onClick={router.back}>
+          <Icon>arrow_back</Icon>
+        </Fab>
+      </Box> */}
     </Container>
   )
 }

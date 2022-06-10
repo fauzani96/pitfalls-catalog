@@ -27,7 +27,7 @@ const Contact = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          mt: 8,
+          mt: 6,
         }}
       >
         <Typography variant="h6" sx={{mb: 6}} align="center">
