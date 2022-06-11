@@ -21,21 +21,15 @@ const About: NextPage = () => {
         align="center"
         sx={{fontWeight: 'bold'}}
       >
-        PITFALLS DESIGN
+        About Us
       </Typography>
-      <Typography paragraph align="justify">
+      <Typography paragraph variant="h6" align="justify">
         We believe in creativity and freedom. They set the trends. They shape
         the industry. As we went online and expanded into more learning areas,
         we stayed true to only working with the best. But we didn`t stop there.
         We want our product reflects how we perceived the world and surrounding.
-        This is our main signature. As simple as that. Customized logo designed
-        for the exact purpose to symbolize our identity and ideals.
       </Typography>
 
-      <Typography paragraph align="justify">
-        This is our main signature. As simple as that. Customized logo designed
-        for the exact purpose to symbolize our identity and ideals.
-      </Typography>
       {/* <Box sx={{textAlign: 'center', mt: 8}}>
         <Fab color="primary" onClick={router.back}>
           <Icon>arrow_back</Icon>

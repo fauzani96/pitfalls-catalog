@@ -34,7 +34,7 @@ export default function Copyright() {
         sx={{p: 2}}
       >
         {'Copyright © '}
-        <Link href="/">Pitfalls</Link> {new Date().getFullYear()}.
+        <Link href="/">Pitfalls</Link> {new Date().getFullYear()}
       </Typography>
     </Box>
   )
