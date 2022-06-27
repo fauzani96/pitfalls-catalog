@@ -22,9 +22,9 @@ import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 const DetailProduct = () => {
   const router = useRouter()
 
-  const {productid} = router.query
+  const id: string = router.query.productid.toString()
 
-  const item = productData.find((x) => x.id === parseInt(productid))
+  const item = productData.find((x) => x.id === parseInt(id))
   const [open, setOpen] = useState<boolean>(false)
   const [url, setUrl] = useState('')
   const handleOpen = () => setOpen(!open)
