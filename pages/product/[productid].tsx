@@ -15,6 +15,7 @@ import {useRouter} from 'next/router'
 import React, {useEffect, useState} from 'react'
 import Images from '../../src/components/image/Image.component'
 import {Category} from '../../src/constants/Category.constant'
+import {detailHoodie, detailShirt} from '../../src/constants/Detail.constant'
 import {productData} from '../../src/constants/Product.constant'
 import {hoodieSize, size} from '../../src/constants/Size.constant'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
@@ -54,12 +55,16 @@ const DetailProduct = () => {
         </Typography>
       </Box>
 
-      <Typography variant="body1" gutterBottom>
-        {item && Category[item.categoryId]}
-      </Typography>
-      <Typography variant="body2" color="textSecondary">
-        {item && convertToRoundedRupiah(item.price, false)}
-      </Typography>
+      <Box sx={{display: 'flex'}}>
+        <Box>
+          <Typography variant="body1" gutterBottom>
+            {item && Category[item.categoryId]}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            {item && convertToRoundedRupiah(item.price, false)}
+          </Typography>
+        </Box>
+      </Box>
 
       <Box sx={{display: {xs: 'block', md: 'flex'}, mt: 4}}>
         <Box sx={{width: {md: 3 / 4}}}>
@@ -74,7 +79,7 @@ const DetailProduct = () => {
               }}
             />
           )}
-          <Box sx={{display: 'flex', mb: 4}}>
+          <Box sx={{display: 'flex', justifyContent: 'center', mb: 4}}>
             {item?.imgSrc.map((res, i) => {
               const _url = res
               return (
@@ -100,12 +105,38 @@ const DetailProduct = () => {
             })}
           </Box>
         </Box>
-        <Box sx={{width: {md: 1 / 4}, pl: {md: 4}}}>
+        <Box sx={{width: {md: 1 / 4}, pl: {md: 4}, mb: 4}}>
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: 50,
+              width: 1,
+              position: 'sticky',
+              bottom: 20,
+              mb: {xs: 4, md: 8},
+              height: 50,
+            }}
+          >
+            buy now
+          </Button>
+          <Typography variant="h6" paragraph>
+            Details
+          </Typography>
+
+          {(item?.categoryId === 3 ? detailHoodie : detailShirt).map(
+            (res, i) => (
+              <Typography gutterBottom key={i}>
+                - {res}
+              </Typography>
+            )
+          )}
+
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
+              mt: {xs: 4, md: 8},
             }}
           >
             <Typography variant="h6" sx={{mr: 2}}>
