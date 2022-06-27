@@ -294,7 +294,7 @@ export const productData = [
     categoryId: 2,
     id: 9,
     price: 185000,
-    imgSrc: [`${src}fanta1.png`, `${src}fanta2.png`, `${src}fanta3.png`],
+    imgSrc: [`${src}fanta1.png`, `${src}fanta2.png`],
   },
   {
     name: 'Suspiria',
