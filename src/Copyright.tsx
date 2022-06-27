@@ -22,16 +22,19 @@ export default function Copyright() {
           mb: 1,
         }}
       >
-        <a href="https://www.instagram.com/pitfalls_design/">
+        <a href="https://www.instagram.com/pitfalls_design/" target="_blank" rel="noreferrer">
           <Image src="/images/instagram.svg" width="25" height="25" />
         </a>
-        <a href="https://shopee.co.id/pitfalls_official_design?page=1&sortBy=pop">
+        <a href="https://shopee.co.id/pitfalls_official_design" target="_blank" rel="noreferrer">
           <Image src="/images/shopee.svg" width="25" height="25" />
         </a>
-        <a href="https://api.whatsapp.com/send?phone=6281387557003">
+        <a
+          href="https://api.whatsapp.com/send?phone=6281387557003"
+          target="_blank" rel="noreferrer"
+        >
           <Image src="/images/whatsapp.svg" width="25" height="25" />
         </a>
-        <a href="https://www.tokopedia.com/pitfalls?source=universe&st=product">
+        <a href="https://www.tokopedia.com/pitfalls" target="_blank" rel="noreferrer">
           <Image src="/images/tokped.png" width="25" height="25" />
         </a>
       </Box>
