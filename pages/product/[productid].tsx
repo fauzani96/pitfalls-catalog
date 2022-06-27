@@ -143,7 +143,11 @@ const DetailProduct = () => {
         </Fab>
         <Box sx={{p: 2}}>
           <Image
-            src="https://cf.shopee.co.id/file/bbd119c2f0963590a6233f88d89c9a9e"
+            src={
+              item?.categoryId === 3
+                ? '/images/hoodiesize.jpeg'
+                : '/images/shirtsize.jpeg'
+            }
             height={700}
             width={700}
           />
