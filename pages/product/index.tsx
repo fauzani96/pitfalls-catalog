@@ -128,8 +128,8 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                     objectFit="cover"
                     layout="fill"
                     style={{borderRadius: 10}}
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAADSCAMAAABThmYtAAAAXVB"
+                    // placeholder="blur"
+                    // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAADSCAMAAABThmYtAAAAXVB"
                   />
                 </Box>
                 <Box

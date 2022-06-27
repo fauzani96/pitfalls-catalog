@@ -117,6 +117,9 @@ const DetailProduct = () => {
               mb: {xs: 4, md: 8},
               height: 50,
             }}
+            component="a"
+            href="https://shopee.co.id/pitfalls_official_design#product_list"
+            target="_blank"
           >
             buy now <LocalGroceryStoreIcon sx={{ml: 1}} />
           </Button>
