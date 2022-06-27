@@ -22,10 +22,18 @@ export default function Copyright() {
           mb: 1,
         }}
       >
-        <Image src="/images/instagram.svg" width="25" height="25" />
-        <Image src="/images/shopee.svg" width="25" height="25" />
-        <Image src="/images/whatsapp.svg" width="25" height="25" />
-        <Image src="/images/tokped.png" width="25" height="25" />
+        <a href="https://www.instagram.com/pitfalls_design/">
+          <Image src="/images/instagram.svg" width="25" height="25" />
+        </a>
+        <a href="https://shopee.co.id/pitfalls_official_design?page=1&sortBy=pop">
+          <Image src="/images/shopee.svg" width="25" height="25" />
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=6281387557003">
+          <Image src="/images/whatsapp.svg" width="25" height="25" />
+        </a>
+        <a href="https://www.tokopedia.com/pitfalls?source=universe&st=product">
+          <Image src="/images/tokped.png" width="25" height="25" />
+        </a>
       </Box>
       <Typography
         variant="body2"

@@ -19,6 +19,7 @@ import {detailHoodie, detailShirt} from '../../src/constants/Detail.constant'
 import {productData} from '../../src/constants/Product.constant'
 import {hoodieSize, size} from '../../src/constants/Size.constant'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore'
 
 const DetailProduct = () => {
   const router = useRouter()
@@ -117,7 +118,7 @@ const DetailProduct = () => {
               height: 50,
             }}
           >
-            buy now
+            buy now <LocalGroceryStoreIcon sx={{ml: 1}} />
           </Button>
           <Typography variant="h6" paragraph>
             Details
