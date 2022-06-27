@@ -109,7 +109,7 @@ const Searchs = () => {
                   onClick={() => router.push(`/product/${prod.id}`)}
                 >
                   <Images
-                    url={prod.imgSrc}
+                    url={prod.imgSrc[0]}
                     height={50}
                     objectFit="contain"
                     otherSx={{

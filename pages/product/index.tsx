@@ -18,11 +18,11 @@ import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 import {productData} from '../../src/constants/Product.constant'
 
 export type ProductType = {
-  id: string
-  categoryId: string
-  price: string
+  id: number
+  categoryId: number
+  price: number
   name: string
-  imgSrc: string
+  imgSrc: string[]
 }
 
 type CategoryType = {id: number; name: string}
@@ -103,9 +103,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
       </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
         {productData
-          .filter((i) =>
-            selectedCat ? parseInt(i.categoryId) === selectedCat : i
-          )
+          .filter((i) => (selectedCat ? i.categoryId === selectedCat : i))
           .map((prod: ProductType, i: number) => {
             return (
               <Box
@@ -125,7 +123,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                   }}
                 >
                   <Image
-                    src={prod.imgSrc}
+                    src={prod.imgSrc?.[0]}
                     alt=""
                     objectFit="cover"
                     layout="fill"
@@ -147,7 +145,7 @@ const Product: FC<Props> = ({productData, categoryData}) => {
                     </Typography>
                   </div>
                   <Typography variant="h6">
-                    {convertToRoundedRupiah(parseInt(prod.price), false)}
+                    {convertToRoundedRupiah(prod.price, false)}
                   </Typography>
                 </Box>
               </Box>

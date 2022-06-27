@@ -21,9 +21,10 @@ import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 
 const DetailProduct = () => {
   const router = useRouter()
-  // @ts-ignore
-  let id: string = router.query.productid
-  const item = productData.find((x) => x.id === id)
+
+  const {productid} = router.query
+
+  const item = productData.find((x) => x.id === parseInt(productid))
   const [open, setOpen] = useState<boolean>(false)
   const [url, setUrl] = useState('')
   const handleOpen = () => setOpen(!open)
@@ -32,7 +33,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     if (item) {
-      setUrl(item.imgSrc)
+      setUrl(item.imgSrc?.[0])
     }
   }, [item])
 
@@ -57,7 +58,7 @@ const DetailProduct = () => {
         {item && Category[item.categoryId]}
       </Typography>
       <Typography variant="body2" color="textSecondary">
-        {item && convertToRoundedRupiah(parseInt(item.price), false)}
+        {item && convertToRoundedRupiah(item.price, false)}
       </Typography>
 
       <Box sx={{display: {xs: 'block', md: 'flex'}, mt: 4}}>
@@ -74,8 +75,8 @@ const DetailProduct = () => {
             />
           )}
           <Box sx={{display: 'flex', mb: 4}}>
-            {Array.from({length: 5}).map((res, i) => {
-              const _url = `https://picsum.photos/1${i}00`
+            {item?.imgSrc.map((res, i) => {
+              const _url = res
               return (
                 <Box
                   sx={{
