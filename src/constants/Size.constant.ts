@@ -5,4 +5,11 @@ const size = [
   {size: 'XL', height: 78, width: 58, sleeve: 22},
 ]
 
-export {size}
+const hoodieSize = [
+  {size: 'S', height: 68, width: 52, sleeve: 53},
+  {size: 'M', height: 71, width: 56, sleeve: 55},
+  {size: 'L', height: 74, width: 59, sleeve: 57},
+  {size: 'XL', height: 83, width: 62, sleeve: 59},
+]
+
+export {size, hoodieSize}

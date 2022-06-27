@@ -16,7 +16,7 @@ import React, {useEffect, useState} from 'react'
 import Images from '../../src/components/image/Image.component'
 import {Category} from '../../src/constants/Category.constant'
 import {productData} from '../../src/constants/Product.constant'
-import {size} from '../../src/constants/Size.constant'
+import {hoodieSize, size} from '../../src/constants/Size.constant'
 import {convertToRoundedRupiah} from '../../src/utils/helper.util'
 
 const DetailProduct = () => {
@@ -116,7 +116,7 @@ const DetailProduct = () => {
             </Button>
           </Box>
           <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-            {size.map((res, i) => (
+            {(item?.categoryId === 3 ? hoodieSize : size).map((res, i) => (
               <Box sx={{width: {xs: 1 / 2, md: 1}, mt: 2, mr: {md: 1}}} key={i}>
                 <Typography gutterBottom>{res.size}</Typography>
                 <Typography variant="body2" color="secondary">
