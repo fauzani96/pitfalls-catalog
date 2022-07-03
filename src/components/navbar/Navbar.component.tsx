@@ -54,7 +54,7 @@ const Navbar = () => {
                       router.pathname.includes(page.href) ? 'contained' : 'text'
                     }
                     size="small"
-                    startIcon={<Icon>{page.icon}</Icon>}
+                    // startIcon={<Icon>{page.icon}</Icon>}
                   >
                     {page.name}
                   </Button>

@@ -50,7 +50,8 @@ const MenuMobile = () => {
                 : 'text.secondary',
             }}
           >
-            <Icon sx={{mr: 1}}>{page.icon}</Icon> {page.name}
+            {/* <Icon sx={{mr: 1}}>{page.icon}</Icon> */}
+            {page.name}
           </MenuItem>
         ))}
       </Menu>
