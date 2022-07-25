@@ -3,19 +3,19 @@ import React from 'react'
 import {Carousel} from 'react-responsive-carousel'
 import Images from '../image/Image.component'
 
-const CarouselComponent = () => {
+const CarouselComponent: React.FC<{}> = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   return (
     <Carousel autoPlay showArrows={false} showStatus={false} showThumbs={false}>
+      {/* @ts-ignore */}
       <Images
         url={`/images/carousel/car1.jpeg`}
-        height={isMobile ? 350 : 750}
+        height={isMobile ? 350 : 500}
         otherSx={{
           width: 1,
         }}
         radius={false}
-        objectFit="cover"
       />
       {/* <Images
       url={`/images/carousel/car1.jpeg`}

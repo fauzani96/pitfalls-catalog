@@ -48,6 +48,7 @@ const Images = ({
         // @ts-ignore
         objectFit={objectFit}
         layout="fill"
+        objectPosition={'top center'}
         style={{borderRadius: radius ? 8 : 0, ...otherImgSx}}
         // placeholder="blur"
         // blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
