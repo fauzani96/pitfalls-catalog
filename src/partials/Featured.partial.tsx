@@ -23,7 +23,7 @@ const Featured = () => {
               mb: {xs: 1, md: 0},
               mr: {xs: 0, md: 1},
             }}
-            otherImgSx={{filter: 'blur(1px)'}}
+            // otherImgSx={{filter: 'blur(1px)'}}
           >
             <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
               {/* <Typography
