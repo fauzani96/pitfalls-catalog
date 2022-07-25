@@ -28,6 +28,8 @@ const About: NextPage = () => {
         the industry. As we went online and expanded into more learning areas,
         we stayed true to only working with the best. But we didn`t stop there.
         We want our product reflects how we perceived the world and surrounding.
+        This is our main signature, as simple as that. Customized logo designed
+        for the exact purpose to symbolize our identity and ideals.
       </Typography>
 
       {/* <Box sx={{textAlign: 'center', mt: 8}}>

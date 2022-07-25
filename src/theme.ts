@@ -21,7 +21,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      '"GT Walsheim"',
+      '"Renogare"',
       '"Helvetica Neue"',
       'Helvetica',
       'Arial',

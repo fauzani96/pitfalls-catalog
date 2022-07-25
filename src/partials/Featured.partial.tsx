@@ -13,65 +13,38 @@ const Featured = () => {
         Latest
       </Typography>
       <Box sx={{display: {xs: 'block', md: 'flex'}}}>
-        <Images
-          url="https://i.postimg.cc/ZKJbtPBd/DSC05751.jpg"
-          height={500}
-          otherSx={{
-            width: 1,
-            mb: {xs: 1, md: 0},
-            mr: {xs: 0, md: 1},
-          }}
-          otherImgSx={{filter: 'blur(1px)'}}
-        >
-          <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
-            <Typography
-              sx={{
-                mb: 2,
-                color: 'white',
-              }}
-            >
-              Motel White
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{borderRadius: 50}}
-              component={Link}
-              href="/product"
-            >
-              shop
-            </Button>
-          </Box>
-        </Images>
-
-        <Images
-          url="https://i.postimg.cc/4N13m2kP/DSC05632.jpg"
-          height={500}
-          otherSx={{
-            width: 1,
-            mb: {xs: 1, md: 0},
-            mr: {xs: 0, md: 1},
-          }}
-          otherImgSx={{filter: 'blur(1px)'}}
-        >
-          <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
-            <Typography
-              sx={{
-                mb: 2,
-                color: 'white',
-              }}
-            >
-              Suspiria
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{borderRadius: 50}}
-              component={Link}
-              href="/product"
-            >
-              shop
-            </Button>
-          </Box>
-        </Images>
+        {[1, 2, 3, 4].map((val) => (
+          <Images
+            key={val}
+            url={`/images/lookbook/lookbook${val}.jpg`}
+            height={500}
+            otherSx={{
+              width: 1,
+              mb: {xs: 1, md: 0},
+              mr: {xs: 0, md: 1},
+            }}
+            otherImgSx={{filter: 'blur(1px)'}}
+          >
+            <Box sx={{position: 'absolute', bottom: '8%', left: '8%'}}>
+              {/* <Typography
+                sx={{
+                  mb: 2,
+                  color: 'white',
+                }}
+              >
+                Motel White
+              </Typography> */}
+              <Button
+                variant="contained"
+                sx={{borderRadius: 50}}
+                component={Link}
+                href="/product"
+              >
+                shop
+              </Button>
+            </Box>
+          </Images>
+        ))}
       </Box>
     </Box>
   )

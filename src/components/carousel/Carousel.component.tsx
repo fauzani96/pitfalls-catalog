@@ -5,6 +5,22 @@ import Images from '../image/Image.component'
 const CarouselComponent = () => (
   <Carousel autoPlay showArrows={false} showStatus={false} showThumbs={false}>
     <Images
+      url={`/images/carousel/car1.jpeg`}
+      height={250}
+      otherSx={{
+        width: 1,
+      }}
+      radius={false}
+    />
+    {/* <Images
+      url={`/images/carousel/car1.jpeg`}
+      height={250}
+      otherSx={{
+        width: 1,
+      }}
+      radius={false}
+    /> */}
+    {/* <Images
       url="https://cf.shopee.co.id/file/dd2640f00858423db6bca11dba4b63bb"
       height={250}
       otherSx={{
@@ -35,7 +51,7 @@ const CarouselComponent = () => (
         width: 1,
       }}
       radius={false}
-    />
+    /> */}
   </Carousel>
 )
 
