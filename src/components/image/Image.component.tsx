@@ -1,5 +1,5 @@
 import {Box} from '@mui/material'
-import React from 'react'
+import React, {useState} from 'react'
 import Image from 'next/image'
 
 type ImageProps = {
@@ -40,6 +40,7 @@ const Images = ({
   children,
   objectFit = 'cover',
 }: ImageProps) => {
+  const [loaded, setLoaded] = useState(false)
   return (
     <Box sx={{height, position: 'relative', ...otherSx}}>
       <Image
@@ -50,8 +51,11 @@ const Images = ({
         layout="fill"
         objectPosition={'top center'}
         style={{borderRadius: radius ? 8 : 0, ...otherImgSx}}
-        // placeholder="blur"
+        placeholder="blur"
         // blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+        blurDataURL={`/_next/image?url=${url}&w=16&q=1`}
+        // className={loaded ? 'unblur' : ''}
+        // onLoadingComplete={() => setLoaded(true)}
       />
       {children}
     </Box>

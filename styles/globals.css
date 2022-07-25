@@ -24,3 +24,16 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.unblur {
+  animation: unblur 1s linear;
+}
+
+@keyframes unblur {
+  from {
+    filter: blur(20px);
+  }
+  to {
+    filter: blur(0);
+  }
+}

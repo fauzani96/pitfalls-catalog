@@ -185,6 +185,13 @@ const DetailProduct = () => {
             }
             height={700}
             width={700}
+            placeholder="blur"
+            // blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+            blurDataURL={`/_next/image?url=${
+              item?.categoryId === 3
+                ? '/images/hoodiesize.jpeg'
+                : '/images/shirtsize.jpeg'
+            }&w=16&q=1`}
           />
         </Box>
       </Dialog>
